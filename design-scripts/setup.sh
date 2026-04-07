@@ -36,10 +36,23 @@ echo ""
 
 # Step 3: Deploy scripts
 echo "[3/4] Deploying scripts to $SCRIPTS_DIR ..."
-mkdir -p "$SCRIPTS_DIR/logo"
+mkdir -p "$SCRIPTS_DIR/logo" "$SCRIPTS_DIR/cip" "$SCRIPTS_DIR/icon"
+
 cp "$SCRIPT_DIR/scripts/logo/generate.py" "$SCRIPTS_DIR/logo/generate.py"
 chmod +x "$SCRIPTS_DIR/logo/generate.py"
 echo "  -> logo/generate.py deployed."
+
+cp "$SCRIPT_DIR/scripts/cip/generate.py" "$SCRIPTS_DIR/cip/generate.py"
+chmod +x "$SCRIPTS_DIR/cip/generate.py"
+echo "  -> cip/generate.py deployed."
+
+cp "$SCRIPT_DIR/scripts/icon/generate.py" "$SCRIPTS_DIR/icon/generate.py"
+chmod +x "$SCRIPTS_DIR/icon/generate.py"
+echo "  -> icon/generate.py deployed."
+
+cp "$SCRIPT_DIR/scripts/test_api.py" "$SCRIPTS_DIR/test_api.py"
+chmod +x "$SCRIPTS_DIR/test_api.py"
+echo "  -> test_api.py deployed."
 echo ""
 
 # Step 4: Verify installation
@@ -50,7 +63,13 @@ echo ""
 echo "=== Setup Complete ==="
 echo ""
 echo "Deployed scripts:"
-echo "  $SCRIPTS_DIR/logo/generate.py"
+echo "  $SCRIPTS_DIR/test_api.py        (API diagnostic)"
+echo "  $SCRIPTS_DIR/logo/generate.py   (Logo design)"
+echo "  $SCRIPTS_DIR/cip/generate.py    (Corporate identity)"
+echo "  $SCRIPTS_DIR/icon/generate.py   (Icon design)"
 echo ""
 echo "Usage:"
-echo "  python3 $SCRIPTS_DIR/logo/generate.py --brand Fandora --style minimalist"
+echo "  python3 $SCRIPTS_DIR/test_api.py                                        # Test API"
+echo "  python3 $SCRIPTS_DIR/logo/generate.py --brand Fandora --style minimalist # Logo"
+echo "  python3 $SCRIPTS_DIR/cip/generate.py  --brand Fandora --style modern     # CIP"
+echo "  python3 $SCRIPTS_DIR/icon/generate.py --brand Fandora --category app-icon # Icon"

@@ -6,7 +6,11 @@ import os
 import sys
 
 def load_api_key():
-    """Load GEMINI_API_KEY from ~/.claude/skills/design/.env"""
+    """Load GEMINI_API_KEY from environment or ~/.claude/skills/design/.env"""
+    key = os.environ.get("GEMINI_API_KEY")
+    if key:
+        return key
+
     env_path = os.path.expanduser("~/.claude/skills/design/.env")
     if not os.path.exists(env_path):
         print(f"Error: .env file not found at {env_path}", file=sys.stderr)
